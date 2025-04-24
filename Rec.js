@@ -6,3 +6,7 @@ class Personagem{
 
     }
 }
+
+class Guerreiro extends Personagem{
+    
+}
