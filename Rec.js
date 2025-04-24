@@ -1,87 +1,54 @@
-class Personagem{
-    constructor(vida, força, mana){
-        this.vida = vida,
-        this.força = força,
-        this.mana - mana
+class Personagem {
+    constructor(nome, vida, força, mana) {
+        this.nome = nome;
+        this.vida = vida;
+        this.força = força;
+        this.mana = mana;
+    }
 
+    atacar() {
+        return `${this.nome} ataca, mas sem habilidade especial.`;
     }
 }
 
-class Guerreiro extends Personagem{
-    constructor(vida, força, ataque, espada){
-        super(vida,força)
-        this.ataque = ataque,
-        this.espada = espada
+class Guerreiro extends Personagem {
+    constructor(nome, vida, força, mana, espada) {
+        super(nome, vida, força, mana);
+        this.espada = espada;
     }
-    get #ataque(){
-        return this.força
-    }
-    set #espada(ataque){
-        this.espada = ataque
-    }
-    get #vida(){
-        return this.vida
-    }
-    set #vida(vida){
-        this.vida = vida
-    }
-    atacar(){
-        if(ataque > vida){
-            vida = -5
-        }
+
+    atacar() {
+        return `${this.nome} golpeia com ${this.espada}, causando ${this.força} de dano!`;
     }
 }
 
-class Mago extends Personagem{
-    constructor(vida, mana, dm, cajado){
-        super(vida,mana)
-        this.dm = dm,
-        this.cajado = cajado
+class Mago extends Personagem {
+    constructor(nome, vida, força, mana, cajado) {
+        super(nome, vida, força, mana);
+        this.cajado = cajado;
     }
-    get #dm(){
-        return this.mana
-    }
-    set #cajado(dm){
-        this.cajado = dm
-    }
-    get #vida(){
-        return this.vida
-    }
-    set #vida(vida){
-        this.vida = vida
-    }
-    atacar(){
-        if(dm > vida){
-            vida = -5
-        }
+
+    atacar() {
+        return `${this.nome} lança um feitiço com ${this.cajado}, causando ${this.mana} de dano!`;
     }
 }
 
-class Arqueiro extends Personagem{
-    constructor(vida, força, tiro, arco){
-        super(vida,força)
-        this.tiro = tiro,
-        this.arco = arco
+class Arqueiro extends Personagem {
+    constructor(nome, vida, força, mana, arco) {
+        super(nome, vida, força, mana);
+        this.arco = arco;
     }
-    get #tiro(){
-        return this.força
-    }
-    set #arco(tiro){
-        this.arco = tiro
-    }
-    get #vida(){
-        return this.vida
-    }
-    set #vida(vida){
-        this.vida = vida
-    }
-    atacar(){
-        if(tiro > vida){
-            vida = -5
-        }
+
+    atacar() {
+        return `${this.nome} dispara uma flecha com ${this.arco}, causando ${this.força} de dano!`;
     }
 }
-dm = 25
-let Guerreiro = new Personagem(20, 30, 0)
-let Mago = new Personagem(15, dm, 40)
-let Arqueiro = new Personagem(15, 35, 0)
+
+// Criando personagens
+const guerreiro = new Guerreiro("Arthur", 100, 20, 10, "Espada Flamejante");
+const mago = new Mago("Merlin", 80, 10, 30, "Cajado Mágico");
+const arqueiro = new Arqueiro("Robin", 90, 25, 5, "Arco da Lua");
+
+console.log(guerreiro.atacar());
+console.log(mago.atacar());
+console.log(arqueiro.atacar());
