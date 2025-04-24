@@ -25,6 +25,11 @@ class Guerreiro extends Personagem{
     set #vida(vida){
         this.vida = vida
     }
+    atacar(){
+        if(ataque > vida){
+            vida = -5
+        }
+    }
 }
 
 class Mago extends Personagem{
@@ -44,6 +49,11 @@ class Mago extends Personagem{
     }
     set #vida(vida){
         this.vida = vida
+    }
+    atacar(){
+        if(dm > vida){
+            vida = -5
+        }
     }
 }
 
@@ -65,4 +75,13 @@ class Arqueiro extends Personagem{
     set #vida(vida){
         this.vida = vida
     }
+    atacar(){
+        if(tiro > vida){
+            vida = -5
+        }
+    }
 }
+dm = 25
+let Guerreiro = new Personagem(20, 30, 0)
+let Mago = new Personagem(15, dm, 40)
+let Arqueiro = new Personagem(15, 35, 0)
