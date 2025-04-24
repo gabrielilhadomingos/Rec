@@ -1,13 +1,54 @@
 class Personagem {
+    #vida;
+    #força;
+    #mana;
+
     constructor(nome, vida, força, mana) {
         this.nome = nome;
-        this.vida = vida;
-        this.força = força;
-        this.mana = mana;
+        this.#vida = vida;
+        this.#força = força;
+        this.#mana = mana;
+    }
+
+    get vida() {
+        return this.#vida;
+    }
+
+    get força() {
+        return this.#força;
+    }
+
+    get mana() {
+        return this.#mana;
+    }
+
+
+    set vida(novaVida) {
+        if (novaVida >= 0) {
+            this.#vida = novaVida;
+        } else {
+            console.error("Vida não pode ser negativa!");
+        }
+    }
+
+    set força(novaForça) {
+        if (novaForça > 0) {
+            this.#força = novaForça;
+        } else {
+            console.error("Força deve ser positiva!");
+        }
+    }
+
+    set mana(novaMana) {
+        if (novaMana >= 0) {
+            this.#mana = novaMana;
+        } else {
+            console.error("Mana não pode ser negativa!");
+        }
     }
 
     atacar() {
-        return `${this.nome} ataca, mas sem habilidade especial.`;
+        return `${this.nome} ataca sem habilidade especial.`;
     }
 }
 
@@ -52,3 +93,7 @@ const arqueiro = new Arqueiro("Robin", 90, 25, 5, "Arco da Lua");
 console.log(guerreiro.atacar());
 console.log(mago.atacar());
 console.log(arqueiro.atacar());
+
+
+guerreiro.vida = 50;
+console.log(`Nova vida do Guerreiro: ${guerreiro.vida}`);
